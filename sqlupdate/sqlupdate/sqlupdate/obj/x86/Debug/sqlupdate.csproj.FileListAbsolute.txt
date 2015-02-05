@@ -1,0 +1,5 @@
+F:\test\sqlupdate\sqlupdate\sqlupdate\bin\Debug\sqlupdate.exe
+F:\test\sqlupdate\sqlupdate\sqlupdate\bin\Debug\sqlupdate.pdb
+F:\test\sqlupdate\sqlupdate\sqlupdate\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\test\sqlupdate\sqlupdate\sqlupdate\obj\x86\Debug\sqlupdate.exe
+F:\test\sqlupdate\sqlupdate\sqlupdate\obj\x86\Debug\sqlupdate.pdb

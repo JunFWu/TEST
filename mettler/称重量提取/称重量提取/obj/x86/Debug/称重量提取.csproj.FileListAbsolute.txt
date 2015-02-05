@@ -1,0 +1,14 @@
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\称重量提取.Properties.Resources.resources
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\称重量提取.exe
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\称重量提取.pdb
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\称重量提取.exe
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\称重量提取.pdb
+F:\test\mettler\称重量提取\称重量提取\obj\x86\Debug\称重量提取.测试主程序.resources
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\称重量提取.exe.config
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\MT.Common.Toolkit.dll
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\log4net.dll
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\IND880.Advance.APIClient.dll
+F:\test\mettler\称重量提取\称重量提取\bin\Debug\IND880.Advance.APIClient.xml

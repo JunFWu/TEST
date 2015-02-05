@@ -1,0 +1,12 @@
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\bin\Debug\OPCserverInterface.exe
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\bin\Debug\OPCserverInterface.pdb
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\OPCserverInterface.Form1.resources
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\OPCserverInterface.Properties.Resources.resources
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\OPCserverInterface.exe
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\OPCserverInterface.pdb
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\bin\Debug\OpcRcw.Da.dll
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\Interop.OpcEnumLib.dll
+F:\test\OPCserverC#\OPCserverInterface\OPCserverInterface\obj\x86\Debug\OPCserverInterface.csproj.ResolveComReference.cache

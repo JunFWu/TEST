@@ -1,0 +1,8 @@
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\ResolveAssemblyReference.cache
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\bin\Debug\服务器客户端之间通信.exe
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\bin\Debug\服务器客户端之间通信.pdb
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\服务器客户端之间通信.exe
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\服务器客户端之间通信.pdb
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\服务器客户端之间通信.服务器.resources
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\GenerateResource.read.1.tlog
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器客户端之间通信\obj\Debug\GenerateResource.write.1.tlog

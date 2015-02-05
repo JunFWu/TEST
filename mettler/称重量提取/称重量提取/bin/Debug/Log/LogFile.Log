@@ -1,0 +1,15 @@
+记录时间：2014-08-27 11:24:02,896 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)

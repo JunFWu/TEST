@@ -1,0 +1,5 @@
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器端\bin\Debug\服务器端.pdb
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器端\obj\Debug\ResolveAssemblyReference.cache
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器端\obj\Debug\服务器端.pdb
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器端\bin\Debug\服务器端.exe
+F:\test\服务器客户端之间通信\服务器客户端之间通信\服务器端\obj\Debug\服务器端.exe

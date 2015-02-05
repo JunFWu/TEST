@@ -1,0 +1,1229 @@
+记录时间：2014-07-29 09:02:55,132 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://127.0.0.1:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:01.1250643 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002。  ---> System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:02:55,201 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:03:34,683 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIClient.DisconnectFromServer()
+记录时间：2014-07-29 09:04:39,015 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:28:49,446 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:28:53,019 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:29:44,507 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:31:51,167 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIClient.DisconnectFromServer()
+记录时间：2014-07-29 09:32:27,736 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID 'c302541a-f62c-4738-a6ee-2d8c29d3bd2c' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 09:32:32,057 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:32:37,408 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:34:28,046 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.ThrowIfFaulted()
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIClient.DisconnectFromServer()
+记录时间：2014-07-29 09:34:33,023 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://127.0.0.1:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:01.0296018 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002。  ---> System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.UnRegisterClient(String clientID)
+   在 IND880.Advance.APIClient.APIClient.DisconnectFromServer()
+记录时间：2014-07-29 09:34:37,438 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://127.0.0.1:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:01.0140018 时间跨度。TCP 错误代码 10061: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002。  ---> System.Net.Sockets.SocketException: 由于目标计算机积极拒绝，无法连接。 127.0.0.1:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:34:37,469 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:35:17,391 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:38:22,522 线程ID :[10] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0060003 时间跨度。TCP 错误代码 10051: 向一个无法连接的网络尝试了一个套接字操作。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 向一个无法连接的网络尝试了一个套接字操作。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:38:22,546 线程ID :[10] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:38:24,732 线程ID :[10] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0060004 时间跨度。TCP 错误代码 10051: 向一个无法连接的网络尝试了一个套接字操作。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 向一个无法连接的网络尝试了一个套接字操作。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:38:24,741 线程ID :[10] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:39:29,550 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:21.0192022 时间跨度。TCP 错误代码 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:39:29,575 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:40:31,953 线程ID :[15] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0030002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:40:31,976 线程ID :[15] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0040002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:40:52,524 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0060003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:40:52,533 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:42:09,036 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:21.0062015 时间跨度。TCP 错误代码 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:42:09,046 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:43:39,748 线程ID :[14] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0030002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:43:39,775 线程ID :[14] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0040003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:45:44,183 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0060003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:45:44,210 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:45:54,126 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0050003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:45:54,135 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:46:31,007 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:21.0072015 时间跨度。TCP 错误代码 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:46:31,016 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:46:57,771 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:21.0062015 时间跨度。TCP 错误代码 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:46:57,781 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:48:21,938 线程ID :[14] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0030002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:48:21,953 线程ID :[14] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0040002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:52:27,799 线程ID :[13] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0030002 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:52:27,826 线程ID :[13] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0040003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.HeartBeat(String clientID)
+   在 IND880.Advance.APIClient.APIClient.TryHeartBeat()
+记录时间：2014-07-29 09:52:40,260 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:00.0060003 时间跨度。TCP 错误代码 10065: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 套接字操作尝试一个无法连接的主机。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:52:40,275 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 09:53:31,841 线程ID :[9] 日志级别: ERROR  System.ServiceModel.EndpointNotFoundException: 无法连接到 net.tcp://169.254.240.134:19002/IND880.Advance.APIServer/APIService。连接尝试持续了 00:00:21.0072015 时间跨度。TCP 错误代码 10060: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002。  ---> System.Net.Sockets.SocketException: 由于连接方在一段时间后没有正确答复或连接的主机没有反应，连接尝试失败。 169.254.240.134:19002
+   在 System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   在 System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   --- 内部异常堆栈跟踪的结尾 ---
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.SocketConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.BufferedConnectionInitiator.Connect(Uri uri, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ConnectionPoolHelper.EstablishConnection(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ClientFramingDuplexSessionChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnOpen(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Open(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOpenOnce.System.ServiceModel.Channels.ServiceChannel.ICallOnce.Call(ServiceChannel channel, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.CallOnceManager.CallOnce(TimeSpan timeout, CallOnceManager cascade)
+   在 System.ServiceModel.Channels.ServiceChannel.EnsureOpened(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs, TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.Call(String action, Boolean oneway, ProxyOperationRuntime operation, Object[] ins, Object[] outs)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.InvokeService(IMethodCallMessage methodCall, ProxyOperationRuntime operation)
+   在 System.ServiceModel.Channels.ServiceChannelProxy.Invoke(IMessage message)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 IND880.Advance.APIClient.APIServiceReference.IAPIService.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIServiceReference.APIServiceClient.RegisterClient(String clientID, String ipAddress, String description, String ciphertext)
+   在 IND880.Advance.APIClient.APIClient.ConnectToServer(String clientDesc)
+记录时间：2014-07-29 09:53:31,851 线程ID :[9] 日志级别: ERROR  System.ServiceModel.CommunicationObjectFaultedException: 通信对象 System.ServiceModel.Channels.ServiceChannel 无法用于通信，因为其处于“出错”状态。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 10:33:33,181 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 11:14:09,238 线程ID :[10] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 11:15:23,730 线程ID :[14] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID '963befe2-55e8-498a-b965-2afdc00ec136' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 11:15:23,761 线程ID :[14] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID '963befe2-55e8-498a-b965-2afdc00ec136' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 11:21:33,187 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 11:33:54,721 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 11:41:00,802 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/CallBackHeartBeat”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 11:46:10,355 线程ID :[8] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:10:31,325 线程ID :[10] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:22:21,674 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:29:42,215 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:29:46,037 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:43:00,134 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:43:14,677 线程ID :[8] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:43:56,196 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 13:54:26,263 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:54:31,233 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:54:33,248 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:54:54,067 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:54:59,338 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:55:18,280 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:55:28,653 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:55:32,334 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:55:34,423 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:56:03,633 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:57:47,430 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:57:49,680 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:58:14,798 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:58:17,263 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 13:58:20,893 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 13:58:20,939 线程ID :[8] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:04,385 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:12,765 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:13,185 线程ID :[16] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID 'ac27cbf3-85a7-4524-9ca2-2aa430bee572' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 14:01:13,215 线程ID :[16] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID 'ac27cbf3-85a7-4524-9ca2-2aa430bee572' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 14:01:15,623 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:20,972 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:52,867 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[System.ArgumentOutOfRangeException]: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3. (错误详细信息等于 System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+参数名: Specified argument was out of the range of valid values.
+Parameter name: There are three client connections now, we just allow the number of the client connections up to 3.)。
+记录时间：2014-07-29 14:01:55,712 线程ID :[13] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID 'a30dabd5-c146-4e22-8c47-3fc68bf5577c' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 14:01:55,733 线程ID :[13] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault]: The client which has the ID 'a30dabd5-c146-4e22-8c47-3fc68bf5577c' is not exist! (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.ConnectIsIllegalExceptionFault)。
+记录时间：2014-07-29 14:04:19,028 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 14:04:21,962 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:04:36,138 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 14:04:45,635 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:27,881 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:27,924 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:28,588 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:29,322 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:29,600 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:29,855 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:30,083 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:30,892 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:32,089 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:32,498 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:32,805 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:33,858 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:34,459 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:35,303 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:35,531 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:35,747 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:06:46,928 线程ID :[9] 日志级别: ERROR  System.ServiceModel.FaultException`1[IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault]: The API service is unavailable now. (错误详细信息等于 IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault)。
+记录时间：2014-07-29 14:07:21,965 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 14:40:48,858 线程ID :[9] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoWeighingDataReceived”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)
+记录时间：2014-07-29 14:41:24,017 线程ID :[1] 日志级别: ERROR  System.ServiceModel.ProtocolException: 通道在关闭时接收到意外的输入消息，Action“http://tempuri.org/IAPIService/DoNewIOStatusReached”。只应在不再需要任何输入消息时关闭通道。
+
+Server stack trace: 
+   在 System.ServiceModel.Channels.FramingDuplexSessionChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.Channels.ServiceChannel.OnClose(TimeSpan timeout)
+   在 System.ServiceModel.Channels.CommunicationObject.Close(TimeSpan timeout)
+
+Exception rethrown at [0]: 
+   在 System.Runtime.Remoting.Proxies.RealProxy.HandleReturnMessage(IMessage reqMsg, IMessage retMsg)
+   在 System.Runtime.Remoting.Proxies.RealProxy.PrivateInvoke(MessageData& msgData, Int32 type)
+   在 System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.System.ServiceModel.ICommunicationObject.Close(TimeSpan timeout)
+   在 System.ServiceModel.ClientBase`1.Close()
+   在 IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(Object client)

@@ -1,0 +1,11 @@
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\Interop.OPCAutomation.dll
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\OPC C.csproj.ResolveComReference.cache
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\OPC_C.Form1.resources
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\OPC_C.Properties.Resources.resources
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\test\OPC C# demo\OPC C\OPC C\bin\Debug\OPC C.exe
+F:\test\OPC C# demo\OPC C\OPC C\bin\Debug\OPC C.pdb
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\OPC C.exe
+F:\test\OPC C# demo\OPC C\OPC C\obj\x86\Debug\OPC C.pdb

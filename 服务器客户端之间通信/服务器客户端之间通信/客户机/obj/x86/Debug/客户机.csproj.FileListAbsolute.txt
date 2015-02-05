@@ -1,0 +1,9 @@
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\bin\Debug\客户机.exe
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\bin\Debug\客户机.pdb
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\客户机.Form1.resources
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\客户机.Properties.Resources.resources
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\GenerateResource.read.1.tlog
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\GenerateResource.write.1.tlog
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\客户机.exe
+F:\test\服务器客户端之间通信\服务器客户端之间通信\客户机\obj\x86\Debug\客户机.pdb

@@ -1,0 +1,3362 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>IND880.Advance.APIClient</name>
+    </assembly>
+    <members>
+        <member name="T:IND880.Advance.APIClient.Events.WeightWindowStatusEventArgs">
+            <summary>
+            The event argument class who provides the status of the weight window.
+            仪表重量显示窗体状态事件参数
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.WeightWindowStatusEventArgs.#ctor(IND880.Advance.APIClient.APIServiceReference.WeightWindow)">
+            <summary>
+            Constructor.
+            构造函数。
+            </summary>
+            <param name="weightWindowStatus">
+            the status of the weight window;
+            仪表重量显示窗体状态
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.WeightWindowStatusEventArgs.WeightWindowStatus">
+            <summary>
+            the status of the weight window;
+            仪表重量显示窗体状态
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs">
+            <summary>
+            The event argument class who provides the ID of the scale which is changed its unit and its new unit.
+            秤台单位变化事件参数，其中包括了新的重量单位和秤台编号
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs.#ctor(System.Int32,IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Constructor
+            构造函数
+            </summary>
+            <param name="scaleNo">
+            the ID of the scale
+            秤台的编号
+            </param>
+            <param name="unit">
+            the current unit
+            当前的单位
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs.ScaleNo">
+            <summary>
+            the ID of the scale
+            秤台编号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs.Unit">
+            <summary>
+            the current unit
+            当前的单位
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.IOBoard">
+            <summary>
+            The base class of IO board
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.IOBoard.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.IOBoard.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.IOBoard.m_IOStatuses">
+            <summary>
+            the status of all input port and output port of this local IO board
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.IOBoard.m_ClientNotify">
+            <summary>
+            The client notification object 
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.#ctor(System.String,System.Int32,System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotify">API server uses this object to imform client</param>
+            <param name="boardType">the type of the IO device, local or remote.</param>
+            <param name="slotNo">the slot No. of local IO board or the address of remote device</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.SetBoardIOPorts(System.Byte,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Set the input and output ports limitation of this IO board
+            </summary>
+            <param name="minInputPortNo">the minimal input port</param>
+            <param name="maxInputPortNo">the maximal input port</param>
+            <param name="minOutputPortNo">the minimal output port</param>
+            <param name="maxOutputPortNo">the maximal output port</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.OutputStatus(System.Byte)">
+            <summary>
+            Get the status of the particular output port
+            </summary>
+            <param name="portNo">the port No which you want to get the status</param>
+            <returns>The output status of the particular port</returns>
+            <exception cref="T:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException">the port number is not in the range between the minimal port number and the maxmial port number</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.InputStatus(System.Byte)">
+            <summary>
+            Get the input status of the particular port
+            </summary>
+            <param name="portNo">the port No which you want to get the input status</param>
+            <exception cref="T:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException">the port number is not in the range between the minimal port number and the maxmial port number</exception>
+            <returns>The input status of the particular port.</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.GetIOBoardIOStatusFromServer">
+             <summary>
+             Get the status of all ports on this board, includes the output ports and input
+             ports
+             </summary>
+            <returns>The IO status of Whole IO device. When there is something wrong, we return a result with false IsAvailable property</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.GetOutputIOStatusFromServer(System.Byte)">
+            <summary>
+            Get the electrical level of the particular output port on this board
+            </summary>
+            <param name="portNo">the particular bit number of the board</param>
+            <returns>Return the output status of the particular port, if there is something wrong, it will return a invalid instance of enumElectricalLevel</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.GetInputIOStatusFromServer(System.Byte)">
+            <summary>
+            Get the input status of the particular port.
+            </summary>
+            <param name="portNo">the particular input port</param>
+            <returns>Return the input status of the particular input port, when there is something run, it will return an invalid instance of input status.</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.ResetRisingEdgeEvent(System.Byte)">
+            <summary>
+            Reset the rising edge events of the particular input port
+            </summary>
+            <param name="portNo">the particular input port</param>
+            <returns>true: succeed to reset the rising edge events, false: failed to reset the rising edge events</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.ResetFallingEdgeEvent(System.Byte)">
+            <summary>
+            Reset the falling edge events of the particular input port
+            </summary>
+            <param name="portNo">the particular input port</param>
+            <returns>true: succeed to reset the falling edge events, false: failed to reset the falling edge events</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.SetOutputStatusToServer(System.Byte,IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel)">
+            <summary>
+            Set the electrical level to the particular port
+            </summary>
+            <param name="portNo">the particular output port number</param>
+            <param name="value">the electrical level of the particular output port</param>
+            <returns>True: succeed to set the particular output port. False: Failed to set output</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.SetIOStatus(IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus)">
+            <summary>
+            Set current IO status of all of ports
+            </summary>
+            <param name="status">the status of IO board</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.DoInputPortStatusChanged(System.Byte,IND880.Advance.APIClient.APIServiceIOReference.InputStatus)">
+            <summary>
+            the event of port input status changed
+            </summary>
+            <param name="portNo">input port number</param>
+            <param name="status">Input status of the port</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.DoOutputPortStatusChanged(System.Byte,IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel)">
+            <summary>
+            the event of port output status changed
+            </summary>
+            <param name="portNo">output port number</param>
+            <param name="status">output status of the port</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.IOBoard.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.MinOutputPort">
+            <summary>
+            the minimal output port No.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.MaxOutputPort">
+            <summary>
+            the maximal output port No.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.MinInputPort">
+            <summary>
+            the minimal input port No.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.MaxInputPort">
+            <summary>
+            the maximal input port No.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.SlotNo">
+            <summary>
+            The slot number
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.IOBoard.InputPortStatusChanged">
+            <summary>
+            This event is fired when the status of input ports are changed
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.IOBoard.OutputPortStatusChanged">
+            <summary>
+            This event is fired when the status of output ports are changed
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.IsAvailable">
+            <summary>
+            This flag represent whether the IO board is available
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.IOBoard.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ScaleNoEventArgs">
+            <summary>
+            The event argument class who provides scale ID which the event is triggered from.
+            包含秤台编号的事件参数
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ScaleNoEventArgs.#ctor(System.Int32)">
+            <summary>
+            Constructor
+            构造函数
+            </summary>
+            <param name="scaleNo">
+            the ID of the scale
+            秤台编号
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleNoEventArgs.ScaleNo">
+            <summary>
+            the ID of the scale
+            秤台编号
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.OutputStatusEventArgs">
+            <summary>
+            The event argument which hold the input status;
+            用于IO输出状态的事件参数
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.OutputStatusEventArgs.#ctor(System.Byte,System.Byte,IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel)">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="slotNo">
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </param>
+            <param name="portNo">
+            the output port number;
+            输出端口号
+            </param>
+            <param name="status">
+            the electrical level of the particular outport port.
+            输出端口的IO电平状态。
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.OutputStatusEventArgs.SlotNo">
+            <summary>
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.OutputStatusEventArgs.PortNo">
+            <summary>
+            the output port number;
+            输出端口号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.OutputStatusEventArgs.Status">
+            <summary>
+            the electrical level of the particular outport port.
+            输出端口的IO电平状态。
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.PLCManager">
+            <summary>
+            The manager of PLC card, this class holds the instance of the PLC card
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.PLCManager.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.PLCManager.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.PLCManager.m_ClientID">
+            <summary>
+            The ID of the client
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.PLCManager.m_ClientNotify">
+            <summary>
+            The notify object which brings you IO information from server.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.PLCManager.m_PLCCard">
+            <summary>
+            The instance of PLC card, in current situation, we can only have one PLC card
+            on the IND880 terminal.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.PLCManager.#ctor(System.String,System.Int32,System.String,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotify">API server uses this object to imform client</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.PLCManager.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.PLCManager.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.PLCManager.GetSetting">
+            <summary>
+            Get the setting of PLC card from server
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.PLCManager.SettingChanged">
+            <summary>
+            The event will be triggered after the user or other API client change the PLC setting.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.PLCManager.PLCCard">
+            <summary>
+            The instance of PLC card, in current situation, we can only have one PLC card
+            on the IND880 terminal.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.PLCManager.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.SetupUIStatusEventArgs">
+            <summary>
+            The event argument class who provides the status of the setup UI;
+            本事件参数给出了仪表称重程序是否进入了配置状态
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.SetupUIStatusEventArgs.#ctor(System.Boolean)">
+            <summary>
+            Constructor
+            构造函数
+            </summary>
+            <param name="status">
+            the status of the setup UI
+            仪表称重程序是否进入了配置状态
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.SetupUIStatusEventArgs.Status">
+            <summary>
+            the status of the setup UI
+            仪表称重程序是否进入了配置状态
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.ClientNotify">
+            <summary>
+            The notify object is in charge of transferring server action to client.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoServerStopping(System.String)">
+            <summary>
+            Tell the client the service will stop, the client should disconnect form API
+            server
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoOperatorCancelShutDown(System.String,System.Boolean)">
+            <summary>
+            Inform the client who request shutdown server that the operator cancel the
+            shutdown operation
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="cancelShutDown">Wether use cancel the process of shutdown</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoWeighingDataReceived(System.Collections.Generic.Dictionary{System.Int32,IND880.Advance.APIClient.APIServiceReference.ScaleWeightData})">
+            <summary>
+            Send weight data to the client
+            </summary>
+            <param name="weightDatas">the list of weighing data</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoCurrentScaleSwitched(System.String,System.Int32,System.Int32)">
+            <summary>
+            Tell the client that the current scale is switched.
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="oldScaleNo">the old current scale NO.</param>
+            <param name="newScaleNo">the new current scale NO.</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoScaleWeighingModeChanged(System.String,System.Int32,IND880.Advance.APIClient.APIServiceReference.enumScaleWeighingMode,IND880.Advance.APIClient.APIServiceReference.Weight)">
+            <summary>
+            Tell the client the weighing mode of a scale is changed.
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="scaleWeighingMode">the weighing mode the scale</param>
+            <param name="scaleNo">the ID of the scale</param>
+            <param name="tareWeight">the weight is tarred on the scale, if the scale is in
+            the gross weighing mode, this value is zero.</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoScaleZeroed(System.String,System.Int32)">
+            <summary>
+            Tell the clients someone zeroed a scale
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="scaleNo">the ID of the scale</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoScaleUnitChanged(System.String,System.Int32,IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Tell the clients that the primary unit of scale is changed
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="scaleNo">the ID of the scale</param>
+            <param name="unit">the unit which you need to switch to</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoScaleSecondaryUnitChanged(System.String,System.Int32,IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Tell the clients that the secondary unit of scale is changed
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="scaleNo">the ID of the scale</param>
+            <param name="unit">the unit which you need to switch to</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoSetupUIStatusChanged(System.String,System.Boolean)">
+            <summary>
+            Inform the client that the status of the setup UI is changed
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="status">this value indicates wether the setup UI is opened</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoWeightWindowChanged(System.String,IND880.Advance.APIClient.APIServiceReference.WeightWindow)">
+            <summary>
+            Tell the client that the status of the weight window is changed
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="weightWindowStatus">the status of the weight window</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoNewIOStatusReached(System.String,System.Collections.Generic.Dictionary{IND880.Advance.APIClient.APIServiceReference.enumIOBoardType,System.Collections.Generic.Dictionary{System.Byte,IND880.Advance.APIClient.APIServiceReference.IOBoardIOStatus}})">
+            <summary>
+            Tell the client that the status of all IO devices reached
+            </summary>
+            <param name="sourceClientID">the client ID which perform this operation.</param>
+            <param name="ioStatuses">the status of all IO devices</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoAnalogOutputSettingChanged(IND880.Advance.APIClient.APIServiceReference.AnalogOutputSetting)">
+            <summary>
+            Tell the client that the setting of analog output card is changed
+            </summary>
+            <param name="setting">The setting of analog output card </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.ClientNotify.DoPLCSettingChanged(IND880.Advance.APIClient.APIServiceReference.PLCSetting)">
+            <summary>
+            Tell the client that the setting of PLC card is changed
+            </summary>
+            <param name="setting">The setting of PLC card</param>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.ServerStopping">
+            <summary>
+            When other client or server will stop the server
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.OperatorCancelShutDown">
+            <summary>
+            The operator cancel to shutdown the terminal.
+            When someone call the ShutDownTermial by not forcing mode.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.WeighingDataReceived">
+            <summary>
+            When it receives weighing data.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.CurrentScaleSwitched">
+            <summary>
+            When other clients or other program change the current scale.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.ScaleWeighingModeChanged">
+            <summary>
+            When other clients or other program change the weighing mode.
+            It might be someone executes taring or clearing tare operation.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.ScaleZeroed">
+            <summary>
+            When other clients or other program zero the scale.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.ScaleUnitChanged">
+            <summary>
+            When other clients or other program change the primary unit of the scale
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.ScaleSecondaryUnitChanged">
+            <summary>
+            When other clients or other program change the secondary unit of the scale.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.SetupUIStatusChanged">
+            <summary>
+            When the status of setup UI is changed.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.WeightWindowChanged">
+            <summary>
+            When the status of weight window is changed.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.NewIOStatusReached">
+            <summary>
+            When the status of all IO devices reached.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.PLCSettingChanged">
+            <summary>
+            When the setting of PLC is changed
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.ClientNotify.AnalogOutputSettingChanged">
+            <summary>
+            When the setting of analog output card is changed
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ClientIDEventArgs">
+            <summary>
+            The event argument which hold the ID of client.
+            
+            客户端ID事件参数，本事件参数中包括了客户端编号
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ClientIDEventArgs.#ctor(System.String)">
+            <summary>
+            Constructor
+            
+            构造函数
+            </summary>
+            <param name="sourceClientID">
+            The ID of source client, which indicates the source client.
+            
+            源客户端编号，用于反映触发事件的客户端
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ClientIDEventArgs.SoureClientID">
+            <summary>
+            The ID of source client, which indicates the source client.
+            
+            源客户端编号，用于反映触发事件的客户端
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.CommonPLCCard">
+            <summary>
+            The common PLC card class which holds the common behaviors of all the PLC card
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.CommonPLCCard.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.CommonPLCCard.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.CommonPLCCard.m_Setting">
+            <summary>
+            the setting object of the PLC card
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.#ctor(System.String,System.Int32,System.String,IND880.Advance.APIClient.APIServiceIOReference.PLCSetting,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            The common PLC object to represent normal kind of PLC card, 
+            if your PLC card has some special function, you need to make a sub class to derive it.
+            </summary>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotify">API server uses this object to imform client</param>
+            <param name="setting">The setting of PLC card</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.SetPlcAppIoSdkUsage(System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Set the behaviors of the PLC
+            </summary>
+            <param name="isAppModeEnabled">Wether or not use application mode on the PLC
+            card</param>
+            <param name="inputCyclicLength">The length you need to read in every time span.
+            </param>
+            <param name="outputCyclicLength">The length you need to write in every time
+            span.</param>
+            <returns>Whether it is successful to set the parameter</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.CyclicInputData(System.Byte[]@,System.Int32@)">
+            <summary>
+            Read data from PLC, it will return the data and the length of data.
+            </summary>
+            <param name="data">the data read by PLC</param>
+            <param name="length">the length of data</param>
+            <returns>
+            PLC_SUCCESSFULLY: Succeed to read the input content
+            PLC_OFFLINE : There are some reasons, 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+            PLC_UNKNOWN_ERROR: There is a exception in the calling process.
+            PLC_INPUT_PARAM_ERROR: The input content length is not as same as 
+                the input length definition in the PLC setting.
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CommonPLCCard.CyclicOutputData(System.Byte[])">
+            <summary>
+            Send the data to the output buffer of the PLC card
+            </summary>
+            <param name="data">the data will be send out</param>
+            <returns>
+            PLC_SUCCESSFULLY: Succeed to write the output content
+            PLC_OFFLINE : There are some reasons, 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+            PLC_UNKNOWN_ERROR: There is a exception in the calling process.
+            PLC_INPUT_PARAM_ERROR: The output content length is not as same as 
+                the output length definition in the PLC setting.
+            </returns>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.PLCType">
+            <summary>
+            The type of the PLC card
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.IsEnabled">
+            <summary>
+            this value indicates whether the PLC is enabled
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.IsAppModeEnabled">
+            <summary>
+            this value indicates whether the PLC card is running in application mode.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.OutputCyclicLength">
+            <summary>
+            The length you need to write in every time span.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.InputCyclicLength">
+            <summary>
+            The length you need to read in every time span.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.CommonPLCCard.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIClient">
+            <summary>
+            the client of the API server
+            API客户端
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ClientID">
+            <summary>
+            the unique ID of this client,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ClientIPAddress">
+            <summary>
+            the IP address of this client,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_Description">
+            <summary>
+            the description of this client,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_Client">
+            <summary>
+            the client used to access the WCF servcie,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ClientNotify">
+            <summary>
+            the callback object which used to recevice the callback from WCF service,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_Terminal">
+            <summary>
+            the terminal object hold by this client,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_IOManager">
+            <summary>
+            the IO manager object hold by this client,
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_PLCManager">
+            <summary>
+            the PLC manager object hold by this client
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_AnalogOutputCard">
+            <summary>
+            the analog output card object hold by this client
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_IsConnected">
+            <summary>
+            this value indicates whether there is a connection between this object and API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_ServerStoppingEventHandler">
+            <summary>
+            The event handler of the ServerStopping event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_OperatorCancelShutDownEventHandler">
+            <summary>
+            The event handler of the ClientNotify event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIClient.m_WCFClientChannelFaultedEventHandler">
+            <summary>
+            The event handler of faulted event of the WCF channel 
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.#ctor">
+            <summary>
+            Contstructor, uses the default API server IP (localhost) and default server port(19001).
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.#ctor(System.String,System.Int32)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.Dispose">
+            <summary>
+            Release resource before we release this object.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.#ctor(System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="clientDesription">
+            the description of the client
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.GenerateClientInfo">
+            <summary>
+            Generate the information of the client, we will use these information to call
+            other method on the API service.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.DisconnectFromServer">
+            <summary>
+            Disconnect from API server
+            </summary>
+            <returns>
+            true: succeed to disconnect; false: failed to disconnect
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.ReleaseOtherResource">
+            <summary>
+            Release the terminal or other structure and any event registration.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.RegisterEventToClientNotify">
+            <summary>
+            Register event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.UnregisterEventToClientNotify">
+            <summary>
+            Unregister event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.ConnectToServer(System.String)">
+            <summary>
+            Connect to API server.
+            </summary>
+            <param name="clientDesc">
+            the description of the client，
+            </param>
+            <returns>
+            true: succeed to connect; false: failed to connect;
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.ComputeCiperText(System.String,System.String,System.String)">
+            <summary>
+            Validate the client information sent by client
+            </summary>
+            <param name="description">the description of the client</param>
+            <param name="ipAddress">IP address of the client</param>
+            <param name="clientID">the ID of the client</param>
+            <returns>the cipertext used to validate the all client information</returns>
+            <exception cref="T:System.ArgumentNullException">When clientID or IPAddress is null or empty</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIClient.ReleaseWCFClientResource(System.Object)">
+            <summary>
+            Read the alibi record which has the particular ID
+            使用指定的编号读取Alibi记录，尚未实现
+            </summary>
+            <param name="alibiID">
+            the ID of Alibi record
+            Alibi记录的编号
+            </param>
+            <returns>
+            The Alibi record which has the particular ID. if there is no such Alibi record, we just return null.
+            含有指定编号的Alibi记录，如果不存在这样的记录将返回Null。
+            </returns>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIClient.ServerStopping">
+            <summary>
+            When other client or server will stop the server,
+            服务器将停止事件，当其他或者用户希望停止API服务器
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIClient.OperatorCancelShutDown">
+            <summary>
+            The operator cancel to shutdown the terminal.
+            When someone call the ShutDownTermial by not forcing mode.
+            当API客户端使用非强制模式调用关闭仪表函数(ShutDownTerminal)时，
+            而用户取消了关闭仪表过程时触发该事件。
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIClient.ServerConnectionFailed">
+            <summary>
+            When the WCF channel has some fault, and it is failed to reconnect, API client use this event to inform the client program.
+            当API客户端连接出现了问题是，API客户端将通过此事件告知调用APIClient对象的程序。
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.Terminal">
+            <summary>
+            the terminal object hold by this client.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.IOManager">
+            <summary>
+            The DiscreteIOManager object hold by this client.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.PLCManager">
+            <summary>
+            The PLC manager object hold by this client
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.AnalogOutputCard">
+            <summary>
+            The analog output card object hold by this client.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIClient.IsConnected">
+            <summary>
+            This value indicates whether there is a connection between this object and API
+            server;
+            客户端是否连接标志。
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.RemoteIOBoard">
+            <summary>
+            The IO devices which are installed outside of the terminal
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.RemoteIOBoard.#ctor(System.String,System.Int32,System.String,System.Byte,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotify">API server uses this object to imform client</param>
+            <param name="slotNo">the slot No. of local IO board or the address of remote device</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.TerminalWeightDataEventArgs">
+            <summary>
+            the event arguments class who provides all the scale weighing data of a terminal.
+            仪表重量事件参数，其中包含了该仪表上的所有秤台的重量数据
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.TerminalWeightDataEventArgs.#ctor(System.Collections.Generic.Dictionary{System.Int32,IND880.Advance.APIClient.APIServiceReference.ScaleWeightData})">
+            <summary>
+            Constructor.
+            构造函数
+            </summary>
+            <param name="weightList">
+            All the scale weighing data of a terminal.
+            仪表上的所有秤台的重量数据
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.TerminalWeightDataEventArgs.WeightList">
+            <summary>
+            All the scale weighing data of a terminal.
+            仪表上的所有秤台的重量数据
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ScaleWeightDataEventArgs">
+            <summary>
+            The event argument class who provides the weighing information of particular scale.
+            秤台重量事件参数，其中包括了秤台称重信息和秤台编号
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ScaleWeightDataEventArgs.#ctor(System.Int32,IND880.Advance.APIClient.APIServiceReference.ScaleWeightData)">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="scaleNo">
+            the ID of scale;
+            秤台编号
+            </param>
+            <param name="data">
+            the weighing information of the particular scale
+            秤台重量对象
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleWeightDataEventArgs.ScaleNo">
+            <summary>
+            the ID of scale;
+            秤台编号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleWeightDataEventArgs.Data">
+            <summary>
+            the weighing information of the particular scale;
+            秤台重量对象
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.LocalIOBoard">
+            <summary>
+            The IO devices which are installed inside of the terminal
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.LocalIOBoard.#ctor(System.String,System.Int32,System.String,System.Byte,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotify">API server uses this object to imform client</param>
+            <param name="slotNo">the slot No. of local IO board or the address of remote device</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException">
+            <summary>
+            The exception indicates the port is out of range.
+            IO端口不在允许范围内的异常
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Exceptions.DiscreteIOException">
+            <summary>
+            The exception of IO devices,
+            IO设备异常
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOException.#ctor">
+            <summary>
+            Constructor,
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOException.#ctor(System.String)">
+            <summary>
+            Constructor;
+            </summary>
+            <param name="message">
+            the message of exception,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOException.#ctor(System.String,System.Exception)">
+            <summary>
+            Constructor,
+            </summary>
+            <param name="message">
+            the message of exception,
+            </param>
+            <param name="inner">
+            the inner exception which you want to wrap,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Use the serialization way to create the new instance of this exception,
+            </summary>
+            <param name="info">
+            The serialization object,
+            </param>
+            <param name="context">
+            the context of this exception,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,IND880.Advance.APIClient.APIServiceIOReference.enumIODirection,System.Byte,System.Byte,System.Byte)">
+            <summary>
+            Constructor,
+            </summary>
+            <param name="boardType">
+            The type of IO board, which includes remote and local IO devices.
+            </param>
+            <param name="direction">The direction of the signal, output or input</param>
+            <param name="portNo">
+            the port number which is used to call the IO function.
+            </param>
+            <param name="maxPortNo">
+            the maximal port number support by the IO device,
+            </param>
+            <param name="minPortNo">
+            the minimal port number support by the IO device,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,IND880.Advance.APIClient.APIServiceIOReference.enumIODirection,System.Byte,System.Byte,System.Byte,System.String)">
+            <summary>
+            Constructor, Use the special message to initialize the instance of the exception.
+            </summary>
+            <param name="message">
+            the special message
+            </param>
+            <param name="boardType">
+            The type of IO board, which includes remote and local IO devices.
+            </param>
+            <param name="direction">The direction of the signal, output or input</param>
+            <param name="portNo">
+            the port number which is used to call the IO function.
+            </param>
+            <param name="maxPortNo">
+            the maximal port number support by the IO device,
+            </param>
+            <param name="minPortNo">
+            the minimal port number support by the IO device,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,IND880.Advance.APIClient.APIServiceIOReference.enumIODirection,System.Byte,System.Byte,System.Byte,System.String,System.Exception)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="message">
+            the special message
+            </param>
+            <param name="inner">
+            the inner exception which you want to wrap.
+            </param>
+            <param name="boardType">
+            The type of IO board, which includes remote and local IO devices.
+            </param>
+            <param name="direction">The direction of the signal, output or input</param>
+            <param name="portNo">
+            the port number which is used to call the IO function.
+            </param>
+            <param name="maxPortNo">
+            the maximal port number support by the IO device,
+            </param>
+            <param name="minPortNo">
+            the minimal port number support by the IO device,
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Use the serialization way to create the new instance of this exception,
+            </summary>
+            <param name="info">
+            The serialization object,
+            </param>
+            <param name="context">
+            the context of this exception,
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.PortNo">
+            <summary>
+            the port number which is used to call the IO function.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.BoardType">
+            <summary>
+            The type of IO board, which includes remote and local IO devices.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.Direction">
+            <summary>
+            The direction of IO port.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.MinPortNo">
+            <summary>
+            the minimal port number support by the IO device.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIOPortOutOfRangeException.MaxPortNo">
+            <summary>
+            the maximal port number support by the IO device
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ScaleSwitchedEventArgs">
+            <summary>
+            The event argument class who provides the new scale ID and the old scale ID when someone change the current scale on the terminal.
+            秤台切换事件参数，其中包含了新的当前秤台编号和老的当前秤台编号
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ScaleSwitchedEventArgs.#ctor(System.Int32,System.Int32)">
+            <summary>
+            Constructor
+            构造函数
+            </summary>
+            <param name="oldScaleNo">
+            the old current scale ID
+            旧的当前秤台编号
+            </param>
+            <param name="newScaleNo">
+            the new current scale ID
+            新的当前秤台编号
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleSwitchedEventArgs.OldScaleNo">
+            <summary>
+            the old current scale ID
+            旧的当前秤台编号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleSwitchedEventArgs.NewScaleNo">
+            <summary>
+            the new current scale ID
+            新的当前秤台编号
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.PLCSettingEventArgs">
+            <summary>
+            The event argument which hold the PLC setting;
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.PLCSettingEventArgs.#ctor(IND880.Advance.APIClient.APIServiceIOReference.PLCSetting)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="setting">the setting of PLC card</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.PLCSettingEventArgs.#ctor(IND880.Advance.APIClient.APIServiceReference.PLCSetting)">
+            <summary>
+            Constructor, use it for transferring setting object from another name space.
+            </summary>
+            <param name="setting">the setting of PLC card</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.PLCSettingEventArgs.Setting">
+            <summary>
+            The setting of PLC card
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.IOStatusEventArgs">
+            <summary>
+            The event argument which hold the IO status;
+            用于IO状态的事件参数，该事件参数返回了所有的IO设备的IO状态
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.IOStatusEventArgs.#ctor(System.Collections.Generic.Dictionary{IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Collections.Generic.Dictionary{System.Byte,IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus}})">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="ioStatuses">
+            The IO status of all the IO devices; For some special reason, there are two set of class which have same name,
+            but we need to use the set of class in the IND880.Advance.APIClient.APIServiceIOReference name space.
+            所有IO设备的IO状态。处于一些特殊的原因，我们有两套相同名称的类型集合，但是我们在对外统一使用
+            IND880.Advance.APIClient.APIServiceIOReference命名空间内的类型集合。
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.IOStatusEventArgs.#ctor(System.Collections.Generic.Dictionary{IND880.Advance.APIClient.APIServiceReference.enumIOBoardType,System.Collections.Generic.Dictionary{System.Byte,IND880.Advance.APIClient.APIServiceReference.IOBoardIOStatus}})">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="ioStatuses">
+            The IO status of all the IO devices; For some special reason, there are two set of class which have same name,
+            but we need to use the set of class in the IND880.Advance.APIClient.APIServiceIOReference name space.
+            所有IO设备的IO状态。处于一些特殊的原因，我们有两套相同名称的类型集合，但是我们在对外统一使用
+            IND880.Advance.APIClient.APIServiceIOReference命名空间内的类型集合。
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.IOStatusEventArgs.IOStatuses">
+            <summary>
+            The IO status of all the IO devices;
+            所有IO设备的IO状态。
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType">
+            <summary>
+            The type of the IO board, it includes local IO and remote IO.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus">
+            <summary>
+            The IO status of the IO board includes the status of all the input and output
+            port attached to this board.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.InputStatuses">
+            <summary>
+            The input status of all input ports
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.IsAvailable">
+            <summary>
+            This flag represent whether the IO board is available
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.OutputStatuses">
+            <summary>
+            The output status of all output ports
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.InputStatus">
+            <summary>
+            The input status represents the status of one port on the a IO board
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.ElectricalLevel">
+            <summary>
+            the electrical level of the particular port
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.HaveFallingEdgeEvent">
+            <summary>
+            It represents if there is a falling edge reached after last time you check this
+            event
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.HaveRisingEdgeEvent">
+            <summary>
+            It represents if there is a rising edge reached after last time you check this
+            event
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.IsValid">
+            <summary>
+            It represents if the input status is valid
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.InputStatus.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel">
+            <summary>
+            The electrical level represents the real electrical level kept on each port of
+            the IO device.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.IOSetting">
+            <summary>
+            The setting of IO devices
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.AutoResetFallingEdgeEvents">
+            <summary>
+            The discrete IO manager judges wether reset the falling edge event of the input
+            port automatically depends on this flag
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.AutoResetRisingEdgeEvents">
+            <summary>
+            The discrete IO manager judges wether reset the rising edge event of the input
+            port automatically depends on this flag
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.IODevices">
+            <summary>
+            IO device list
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.IOSetting.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting">
+            <summary>
+            The setting of the PLC card
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.InputCyclicLength">
+            <summary>
+            The length you need to read in every time span.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.IsAppModeEnabled">
+            <summary>
+            this value indicates whether the PLC card is running in application mode.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.IsEnabled">
+            <summary>
+            this value indicates whether the PLC is enabled
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.OutputCyclicLength">
+            <summary>
+            The length you need to write in every time span.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.PLCType">
+            <summary>
+            the type of PLC card
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.PLCSetting.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumPLCType">
+            <summary>
+            The type of PLC card installed in the terminal
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumPLCOperationResult">
+            <summary>
+            This enumeration give us the execution result of the methods of PLC
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting">
+            <summary>
+            The setting of analog output board
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.IsAppModeEnabled">
+            <summary>
+            this value indicates whether the analog output card is running at application
+            mode
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.IsEnabled">
+            <summary>
+            the value indicates whether the analog output card is enabled.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.OutputType">
+            <summary>
+            this value indicates which type of output is provided by the analog output card.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.SpanValue">
+            <summary>
+            the span value of the analog output card
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.ZeroValue">
+            <summary>
+            the zero value of the analog output card
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumAnalogOutputType">
+            <summary>
+            The enumAnalogOutputType represents which kind of output is provided by 
+            analog output card
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">
+            <summary>
+            This exception tell you that the ShareData server is not connected.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault.IPAddress">
+            <summary>
+            the IP address of Share Data server
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault.Port">
+            <summary>
+            the port of Share Data server
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault">
+            <summary>
+            This class is used to wrap the ConnectIsIllegalException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault.ClientID">
+            <summary>
+            the clientID which is illegal.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault">
+            <summary>
+            This class is used to wrap the APIServiceIsUnavailableException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">
+            <summary>
+            This class is used to wrap the DiscreteIODeviceNotExistException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault.BoardType">
+            <summary>
+            The type of IO board, which includes remote and local IO devices.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault.SlotNo">
+            <summary>
+            the slot number of the IO device which is not exist in the IO device list
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">
+            <summary>
+            This class is used to wrap the APIServiceIsUnavailableException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault.Command">
+            <summary>
+            the command send by client
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault.Response">
+            <summary>
+            the response received from
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">
+            <summary>
+            This class is used to wrap the DiscreteIOPortOutOfRangeException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.BoardType">
+            <summary>
+            The type of IO board, which includes remote and local IO devices.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.Direction">
+            <summary>
+            The direction of IO port.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.MaxPortNo">
+            <summary>
+            the maximal port number support by the IO device
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.MinPortNo">
+            <summary>
+            the minimal port number support by the IO device
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.PortNo">
+            <summary>
+            the port number which is used to call the IO function.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.enumIODirection">
+            <summary>
+            Represents IO device check the electrical level from the cord or
+            IO device is set the electrical level to the cord.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIServiceIOReference.enumIODirection.IO_Input">
+            <summary>
+            Represents IO device check the electrical level from the cord.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.APIServiceIOReference.enumIODirection.IO_Output">
+            <summary>
+            Represents IO device set the electrical level to the cord.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault">
+            <summary>
+            This class is used to wrap the AnalogOutputBoardNotInAppModeException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault">
+            <summary>
+            This class is used to wrap the AnalogOutputBoardNotAvailableException exception,
+            then you can transfer this exception fault between the WCF server and client end.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault.RaisePropertyChanged(System.String)">
+            <summary>
+            Called from a property setter to notify the framework that an Entity member has changed.
+            </summary>
+            <param name="propertyName">property name</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault.ExtensionData">
+            <summary>        
+            Gets or sets the structure that contains extra data        
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault.PropertyChanged">
+            <summary>
+            The PropertyChanged event can indicate all properties on the object have changed.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO">
+            <summary>
+            Interface definition of IO service
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetIOBoardIOStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte)">
+            <summary>
+            Get the IO status of all port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <returns>the IO status of all port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>   
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetInputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Get the IO status of the particular input port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>the IO status of the particular input port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetOutputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Get the IO status of the particular output port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the output port number</param>
+            <returns>the IO status of the particular output port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.SetOutputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte,IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel)">
+            <summary>
+            Set the electrical level of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the output port number</param>
+            <param name="level">the electrical level of output port</param>
+            <returns>True: Succeed to set the output status; False: Failed to set the output status</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.SetNeedIOStatus(System.String,System.Boolean)">
+            <summary>
+            Set wether it needs server to push IO status automatically
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="need">the flag if we need to push the IO status automatically</param>
+            <returns>True: Succeed to set whether client need server to push IO status; False: Failed to set whether client need server to push IO status</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.SetAutoResetEdgeEventBehavior(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Set the behavior of resetting the edge events
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="autoResetRisingEdge">Whether reset the rising edge event automatically</param>
+            <param name="autoResetFallingEdge">Whether reset the falling edge event automatically</param>
+            <returns>True: Succeed to set whether client needs server to reset rising or falling edge event; 
+            False: Failed to set whether client needs server to reset rising or falling edge event;</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.ResetRisingEdgeEvent(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Reset the rising edge event of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>True: Succeed to reset the rising edge events; False: Failed to reset the rising edge events</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.ResetFallingEdgeEvent(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Reset the falling edge event of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>True: Succeed to reset falling edge events; False: Failed to reset falling edge events</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetIOSetting(System.String)">
+            <summary>
+            Get the IO device list and other settings from API server
+            </summary>
+            <param name="clientID">the ID of client</param>
+            <returns>the IO device list and other settings</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetPLCCardSettingFromServer(System.String)">
+            <summary>
+            Get PLC setting from API server
+            </summary>
+            <param name="clientID">The ID of client</param>
+            <returns>PLC card setting from API server</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.SetPlcAppIoSDKUsage(System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Set the behaviors of the PLC card
+            </summary>
+            <param name="clientID">the ID of the client
+            </param>
+            <param name="appModeEnable">Whether use or not the application mode</param>
+            <param name="inputCyclicLength">The length you need to read in every time
+            span</param>
+            <param name="outputCyclicLength">The length you need to write every time
+            span</param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When the setting parameter has something wrong.</exception>
+            <exception cref="T:System.ArgumentNullException">When the setting parameter is null.</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.CyclicInputData(System.String)">
+            <summary>
+            Read the data from the input buffer of PLC card
+            </summary>
+            <param name="clientID">the ID o fthe client</param>
+            <returns>data from the input buffer of PLC card</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> when the the data have the different length with the input length of the setting</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.CyclicOutputData(System.String,System.Byte[])">
+            <summary>
+            Write the data to the output buffer of PLC card
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="data">the data which will be send to PLC</param>
+            <returns>PLC operation result</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> when the the data have the different length with the output length of the setting</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.GetAnalogOutputSetting(System.String)">
+            <summary>
+            Get the setting of analog output card from server
+            </summary>
+            <param name="clientID">The ID of the client</param>
+            <returns>the setting of analog output card from server</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.CalibrateAnalogOutput(System.String,System.Boolean,System.Double,System.Double)">
+            <summary>
+            Use two double value of zero and span values to set the new mapping to the
+            output 4mA(zero) and 20mA(span), the parameters have no unit, you can use any
+            of double range form your application to map to the range form 4mA to 20mA.
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="isAppModeEnabled">Whether the application mode is enabled</param>
+            <param name="zero">the zero value which represents to the zero of 4mA</param>
+            <param name="span">the span value which represents to the span of 20mA
+            </param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> zero and span are invalid.</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIO.SetAnalogOutputValue(System.String,System.Double)">
+            <summary>
+            Use two double value of zero and span values to set the new mapping to the
+            output 4mA(zero) and 20mA(span), the parameters have no unit, you can use any
+            of double range form your application to map to the range form 4mA to 20mA.
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="outputValue">the output value, you need to ensure that your output
+            value is between the zero and span value which you use the
+            CalibrateAnalogOutput method to set.</param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The output value is out of range from zero to span</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault">
+            When the analog output board is not installed or the iButton doesn't allow you to use the slot.
+            </exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault">
+            The analog output board is not running at application mode.
+            </exception>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.IAPIServiceIOChannel">
+            <summary>
+            IO servcie channel
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient">
+            <summary>
+            Servcie reference proxy class
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.#ctor">
+            <summary>
+            Generated Proxy Classes Constructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.#ctor(System.String)">
+            <summary>
+            Generated Proxy Classes Constructor
+            </summary>
+            <param name="endpointConfigurationName">end point configuration name</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.#ctor(System.String,System.String)">
+            <summary>
+            Generated Proxy Classes Constructor
+            </summary>
+            <param name="endpointConfigurationName">end point configuration name</param>
+            <param name="remoteAddress">remote address</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.#ctor(System.String,System.ServiceModel.EndpointAddress)">
+            <summary>
+            Generated Proxy Classes Constructor
+            </summary>
+            <param name="endpointConfigurationName">end point configuration name</param>
+            <param name="remoteAddress">remote address</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.#ctor(System.ServiceModel.Channels.Binding,System.ServiceModel.EndpointAddress)">
+            <summary>
+            Generated Proxy Classes Constructor
+            </summary>
+            <param name="binding">binding elements</param>
+            <param name="remoteAddress">remote address</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetIOBoardIOStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte)">
+            <summary>
+            Get the IO status of all port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <returns>the IO status of all port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>   
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetInputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Get the IO status of the particular input port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>the IO status of the particular input port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetOutputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Get the IO status of the particular output port on the particular IO device
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the output port number</param>
+            <returns>the IO status of the particular output port on the particular IO device</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.SetOutputStatus(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte,IND880.Advance.APIClient.APIServiceIOReference.enumElectricalLevel)">
+            <summary>
+            Set the electrical level of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the output port number</param>
+            <param name="level">the electrical level of output port</param>
+            <returns>True: Succeed to set the output status; False: Failed to set the output status</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.SetNeedIOStatus(System.String,System.Boolean)">
+            <summary>
+            Set wether it needs server to push IO status automatically
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="need">the flag if we need to push the IO status automatically</param>
+            <returns>True: Succeed to set whether client need server to push IO status; False: Failed to set whether client need server to push IO status</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.SetAutoResetEdgeEventBehavior(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Set the behavior of resetting the edge events
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="autoResetRisingEdge">Whether reset the rising edge event automatically</param>
+            <param name="autoResetFallingEdge">Whether reset the falling edge event automatically</param>
+            <returns>True: Succeed to set whether client needs server to reset rising or falling edge event; 
+            False: Failed to set whether client needs server to reset rising or falling edge event;</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.ResetRisingEdgeEvent(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Reset the rising edge event of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>True: Succeed to reset the rising edge events; False: Failed to reset the rising edge events</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.ResetFallingEdgeEvent(System.String,IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.Byte)">
+            <summary>
+            Reset the falling edge event of the particular port of the particular board
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="boardType">The type of IO device</param>
+            <param name="slotNo">the slotNo of local board or the address of the remote IO device</param>
+            <param name="portNo">the input port number</param>
+            <returns>True: Succeed to reset falling edge events; False: Failed to reset falling edge events</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIODeviceNotExistExceptionFault">The slot number is not in the IO device list</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.DiscreteIOPortOutOfRangeExceptionFault">The port number is out of range</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetIOSetting(System.String)">
+            <summary>
+            Get the IO device list and other settings from API server
+            </summary>
+            <param name="clientID">the ID of client</param>
+            <returns>the IO device list and other settings</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetPLCCardSettingFromServer(System.String)">
+            <summary>
+            Get PLC setting from API server
+            </summary>
+            <param name="clientID">The ID of client</param>
+            <returns>PLC card setting from API server</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.SetPlcAppIoSDKUsage(System.String,System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            Set the behaviors of the PLC card
+            </summary>
+            <param name="clientID">the ID of the client
+            </param>
+            <param name="appModeEnable">Whether use or not the application mode</param>
+            <param name="inputCyclicLength">The length you need to read in every time
+            span</param>
+            <param name="outputCyclicLength">The length you need to write every time
+            span</param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">When the setting parameter has something wrong.</exception>
+            <exception cref="T:System.ArgumentNullException">When the setting parameter is null.</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.CyclicInputData(System.String)">
+            <summary>
+            Read the data from the input buffer of PLC card
+            </summary>
+            <param name="clientID">the ID o fthe client</param>
+            <returns>data from the input buffer of PLC card</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> when the the data have the different length with the input length of the setting</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.CyclicOutputData(System.String,System.Byte[])">
+            <summary>
+            Write the data to the output buffer of PLC card
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="data">the data which will be send to PLC</param>
+            <returns>PLC operation result</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> when the the data have the different length with the output length of the setting</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception> 
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.GetAnalogOutputSetting(System.String)">
+            <summary>
+            Get the setting of analog output card from server
+            </summary>
+            <param name="clientID">The ID of the client</param>
+            <returns>the setting of analog output card from server</returns>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.CalibrateAnalogOutput(System.String,System.Boolean,System.Double,System.Double)">
+            <summary>
+            Use two double value of zero and span values to set the new mapping to the
+            output 4mA(zero) and 20mA(span), the parameters have no unit, you can use any
+            of double range form your application to map to the range form 4mA to 20mA.
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="isAppModeEnabled">Whether the application mode is enabled</param>
+            <param name="zero">the zero value which represents to the zero of 4mA</param>
+            <param name="span">the span value which represents to the span of 20mA
+            </param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentException"> zero and span are invalid.</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+        </member>
+        <member name="M:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIOClient.SetAnalogOutputValue(System.String,System.Double)">
+            <summary>
+            Use two double value of zero and span values to set the new mapping to the
+            output 4mA(zero) and 20mA(span), the parameters have no unit, you can use any
+            of double range form your application to map to the range form 4mA to 20mA.
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="outputValue">the output value, you need to ensure that your output
+            value is between the zero and span value which you use the
+            CalibrateAnalogOutput method to set.</param>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.ConnectIsIllegalExceptionFault"> there is no connection which client ID is the particular client ID</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.APIServiceIsUnavailableExceptionFault"> when the service is unavailable</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">The output value is out of range from zero to span</exception> 
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerPerformFailedExceptionFault">When ShareData cannot reponse the correct answer</exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.SDServerNotConnectedExceptionFault">When ShareData server is not connected</exception>  
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotAvailableExceptionFault">
+            When the analog output board is not installed or the iButton doesn't allow you to use the slot.
+            </exception>
+            <exception cref="T:IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputBoardNotInAppModeExceptionFault">
+            The analog output board is not running at application mode.
+            </exception>
+        </member>
+        <member name="T:IND880.Advance.APIClient.DiscreteIOManager">
+            <summary>
+            The class holds all the operations of discrete IO.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_ClientID">
+            <summary>
+            The ID of the client
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_ClientNotify">
+            <summary>
+            The notify object which brings you IO information from server.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_LocalIOBoards">
+            <summary>
+            The list of the local IO board
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.DiscreteIOManager.m_RemoteIOBoards">
+            <summary>
+            The list of remote IO boards
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.#ctor(System.String,System.Int32,System.String,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotitfy">API server uses this object to imform client</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.RegisterEventToClientNotify">
+            <summary>
+            Register event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.UnRegisterEventToClientNotify">
+            <summary>
+            Unregister event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.m_ClientNotify_NewIOStatusReached(System.Object,IND880.Advance.APIClient.Events.IOStatusEventArgs)">
+            <summary>
+            IO manager receives the IO status list
+            </summary>
+            <param name="sender">the source of the event</param>
+            <param name="e">the event arguments which includes the IO status of all IO devices</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.SetNeedIOStatus(System.Boolean)">
+            <summary>
+            Set whether this client need API server push the IO status data automatically.
+            </summary>
+            <param name="needFlag">the flag represents whether you need server push the IO
+            status data to this client automatically.</param>
+            <returns>True: Succeed to set whether client need server to push IO status; False: Failed to set whether client need server to push IO status</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.LocalIOBoard(System.Byte)">
+            <summary>
+            Get the instance of local IO board
+            </summary>
+            <param name="slotNo">the slot No of the board</param>
+            <returns>The instance of local IO board which has the particular slot No.</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.RemoteIOBoard(System.Byte)">
+            <summary>
+            Get the instance of remote IO device
+            </summary>
+            <param name="slotNo">the slot number of remote IO device</param>
+            <returns>The instance of remote IO device which has the particular slot No.</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.GetAllSettingFromServer">
+            <summary>
+            Get all of local IO boards and all of remote IO devices
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.SetAutoResetEdgeEventBehavior(System.Boolean,System.Boolean)">
+            <summary>
+            Set the behavior of resetting the edge events
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="autoResetRisingEdge">Whether reset the rising edge event automatically</param>
+            <param name="autoResetFallingEdge">Whether reset the falling edge event automatically</param>
+            <returns>True: Succeed to set whether client needs server to reset rising or falling edge event; 
+            False: Failed to set whether client needs server to reset rising or falling edge event;</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.DiscreteIOManager.ClearAllIODevices">
+            <summary>
+            Clear all the IO devices
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.DiscreteIOManager.NewIOStatusReached">
+            <summary>
+            When you use the push mode, this event will be trigged when the new IO status reaches.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.DiscreteIOManager.LocalIOBoards">
+            <summary>
+            The list of the local IO boards
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.DiscreteIOManager.RemoteIOBoards">
+            <summary>
+            The list of the remote IO boards
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.DiscreteIOManager.AutoResetRisingEdgeEvents">
+            <summary>
+            The discrete IO manager judges wether reset the rising edge event of the input
+            port automatically depends on this flag
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.DiscreteIOManager.AutoResetFallingEdgeEvents">
+            <summary>
+            The discrete IO manager judges wether reset the falling edge event of the input
+            port automatically depends on this flag
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.DiscreteIOManager.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.AnalogOutputCard">
+            <summary>
+            The class represents all the behaviors of a analog output card.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.AnalogOutputCard.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.AnalogOutputCard.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.AnalogOutputCard.m_ClientID">
+            <summary>
+            The ID of the client
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.AnalogOutputCard.m_ClientNotify">
+            <summary>
+            The notify object which brings you IO information from server.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.AnalogOutputCard.m_Setting">
+            <summary>
+            the setting of the analog output card
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.#ctor(System.String,System.Int32,System.String,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            The constructor
+            </summary>
+            <param name="clientID">the ID of the client</param>
+            <param name="clientNotitfy">API server uses this object to imform client</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.CalibrateAnalogOutput(System.Boolean,System.Double,System.Double)">
+            <summary>
+            Use two double value of zero and span values to set the new mapping to the
+            output 4mA(zero) and 20mA(span), the parameters have no unit, you can use any
+            of double range form your application to map to the range form 4mA to 20mA.
+            </summary>
+            <param name="isAppModeEnabled">Whether the analog output card is running at application mode.</param>
+            <param name="zero">This is the zero value which represents the 4mA
+            point</param>
+            <param name="span">This is the span value which represents the 20mA
+            point</param>
+            <returns>True: Succeed to set the configuration; False: Failed to set the configuration</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.SetOutputValue(System.Double)">
+            <summary>
+            Set the output value to the analog output card
+            </summary>
+            <param name="outputValue">the output value, you need to ensure that your output
+            value is between the zero and span value which you use the
+            CalibrateAnalogOutput method to set.</param>
+            <returns>True: Succeed to set the output value; False: Failed to set the output value</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.AnalogOutputCard.GetSetting">
+            <summary>
+            Get the setting of analog output card, It will update the Zero, Span, IsEnabled
+            properties
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.AnalogOutputCard.SettingChanged">
+            <summary>
+            The event will trigger after the user or other API client change the setting.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.SpanValue">
+            <summary>
+            the span value of the analog output
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.ZeroValue">
+            <summary>
+            the zero value of the analog output card
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.IsEnabled">
+            <summary>
+            the value indicates whether the analog output card is enabled.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.IsAppModeEnabled">
+            <summary>
+            this value indicates whether the analog output card is running at application
+            mode
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.OutputType">
+            <summary>
+            Which type you need analog output card to generate.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.AnalogOutputCard.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ShutdownResponseEventArgs">
+            <summary>
+            The event argument class who provides the status of the setup UI;
+            本事件参数给出了仪表称重程序是否进入了配置状态
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ShutdownResponseEventArgs.#ctor(System.String,System.Boolean)">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="sourceClientID">
+            the ID of client which ask the terminal to shutdown.
+            引起关机事件的API 客户端ID
+            </param>
+            <param name="cancelShutDown">
+            Whether you need to cancel the shutdown process.
+            返回用户是否取消关机过程
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ShutdownResponseEventArgs.SourceClientID">
+            <summary>
+            the ID of client which ask the terminal to shutdown.
+            引起关机事件的API 客户端ID
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ShutdownResponseEventArgs.CancelShutDown">
+            <summary>
+            Whether you need to cancel the shutdown process.
+            返回用户是否取消关机过程
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.AnalogOutputSettingEventArgs">
+            <summary>
+            The event argument which hold the analog output setting;
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.AnalogOutputSettingEventArgs.#ctor(IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="setting">the setting of analog output card</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.AnalogOutputSettingEventArgs.#ctor(IND880.Advance.APIClient.APIServiceReference.AnalogOutputSetting)">
+            <summary>
+            Constructor, use it for transferring setting object from another name space.
+            </summary>
+            <param name="setting">the setting of analog output card</param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.AnalogOutputSettingEventArgs.Setting">
+            <summary>
+            The setting of analog output card
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.CloneData">
+            <summary>
+            This class provides the function for deeply copying some special class.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneWeight(IND880.Advance.APIClient.APIServiceReference.Weight)">
+            <summary>
+            Provide the deep clone method of the object of Weight
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneScaleWeightData(IND880.Advance.APIClient.APIServiceReference.ScaleWeightData)">
+            <summary>
+            Provide the deep clone method of the object of ScaleWeightData
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneWeightRange(IND880.Advance.APIClient.APIServiceReference.WeightRange)">
+            <summary>
+            Provide the deep clone method of the object of WeightRange
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneScaleSetting(IND880.Advance.APIClient.APIServiceReference.ScaleSetting)">
+            <summary>
+            Provide the deep clone method of the object of ScaleSetting
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneTerminalSetting(IND880.Advance.APIClient.APIServiceReference.TerminalSetting)">
+            <summary>
+            Provide the deep clone method of the object of TerminalSetting
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneWeightWindow(IND880.Advance.APIClient.APIServiceReference.WeightWindow)">
+            <summary>
+            Provide the deep clone method of the object of WeightWindow
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneInputStatus(IND880.Advance.APIClient.APIServiceIOReference.InputStatus)">
+            <summary>
+            Provide the deep clone method of the object of InputStatus
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneIOBoardIOStatus(IND880.Advance.APIClient.APIServiceIOReference.IOBoardIOStatus)">
+            <summary>
+            Provide the deep clone method of the object of IOBoardIOStatus
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.CloneAnalogOutputSetting(IND880.Advance.APIClient.APIServiceIOReference.AnalogOutputSetting)">
+            <summary>
+            Provide the deep clone method of the object of AnalogOutputSetting
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.CloneData.ClonePLCSetting(IND880.Advance.APIClient.APIServiceIOReference.PLCSetting)">
+            <summary>
+            Provide the deep clone method of the object of PLCSetting
+            </summary>
+            <param name="data">the object who will be cloned</param>
+            <returns>the cloned data</returns>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Terminal">
+            <summary>
+            This class represents all of function of terminal.
+            本类用于给出仪表所拥有的功能。
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_SetupUIIsOpen">
+            <summary>
+            this value indicates wether the setup UI is open
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_Setting">
+            <summary>
+            the setting information of the terminal
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_WeightWindow">
+            <summary>
+            the status of the weight window
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_WeighingDataReceivedEventHandler">
+            <summary>
+            The event handler of the WeighingDataReceived event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_CurrentScaleSwitchedEventHandler">
+            <summary>
+            The event handler of the CurrentScaleSwitched event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ScaleWeighingModeChangedEventHandler">
+            <summary>
+            The event handler of the ScaleWeighingModeChanged event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ScaleZeroedEventHandler">
+            <summary>
+            The event handler of the ScaleZeroed event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ScalePrimaryUnitChangedEventHandler">
+            <summary>
+            The event handler of the ScalePrimaryUnitChanged event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_ScaleSecondaryUnitChangedEventHandler">
+            <summary>
+            The event handler of the ScaleSecondaryUnitChanged event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_SetupUIStatusChangedEventHandler">
+            <summary>
+            The event handler of the SetupUIStatusChanged event of the ClientNotify
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Terminal.m_WeightWindowChangedEventHandler">
+            <summary>
+            The event handler of the WeightWindowChanged event of the ClientNotify
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.#ctor(System.String,System.Int32,IND880.Advance.APIClient.ClientNotify,System.String)">
+            <summary>
+            Constructor with the client notification object
+            构造函数
+            </summary>
+            <param name="clientNotify">
+            the object who deals with the callback from API server
+            客户端通知对象实例
+            </param>
+            <param name="clientID">
+            The ID of the API client who hold this terminal object
+            持有本对象实例的API客户端编号
+            </param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.Dispose">
+            <summary>
+            Release resource before we release this object.
+            在释放对象前释放其所占用的资源。
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.Scale(System.Int32)">
+            <summary>
+            Get the instance of scale by the particular scale ID.
+            获取指定编号的秤台对象实例
+            </summary>
+            <param name="scaleNo">
+            the particular scale ID;
+            指定秤台编号
+            </param>
+            <returns>
+            the instance of scale which has the particular ID;
+            返回具有指定编号的秤台实例
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.SwitchCurrentScale(System.Int32)">
+            <summary>
+            Switch current scale to particular scale;
+            将仪表的当前秤台切换至指定的秤台编号。
+            </summary>
+            <param name="scaleNo">
+            the No of the scale;
+            指定的秤台编号。
+            </param>
+            <returns>
+            SWITCHSCALE_FAILED : Failed to switch scale, please check the log file.
+            SWITCHSCALE_NOTPERFORMED : The process is not performed by terminal for some reason, 
+            just likes the ID of current scale is same as the ID which you want to switch to.
+            SWITCHSCALE_SUCCESS : Succeed to switch the scale.
+            SWITCHSCALE_UNKNOWNERROR : There is a unknow error trigged by terminal.
+            SWITCHSCALE_FAILED : 切换秤台失败，请检查日志文件。
+            SWITCHSCALE_NOTPERFORMED : 本命令由于某些原因未被执行。
+            SWITCHSCALE_SUCCESS : 成功的切换了秤台。
+            SWITCHSCALE_UNKNOWNERROR : 在切换秤台过程中产生了位置的错误。
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.DoCurrentScaleSwitched(IND880.Advance.APIClient.Events.ScaleSwitchedEventArgs)">
+            <summary>
+            Tell other software the current scale is switched
+            </summary>
+            <param name="e">the event argument</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.SetWeightWindowStatus(IND880.Advance.APIClient.APIServiceReference.WeightWindow)">
+            <summary>
+            Set the displaying mode of the basic package,
+            设置称重软件基本包的显示模式
+            </summary>
+            <param name="weightWindowStatus">
+            the status of weight window.
+            称重窗体的状态
+            </param>
+            <returns>
+            True:Succeed to set the status of weight window. False: Failed to set the status of weight window
+            True:成功的设置称重窗体模式; False: 设置称重窗体模式失败
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.SetNeedWeightData(System.Boolean)">
+            <summary>
+            Inform API server to send weight to this client automatically;
+            告知API 服务器是否需要自动推送重量数据到本客户端。
+            </summary>
+            <param name="need">
+            whether you need the server send the weight data to this client
+            是否需要API服务器自动推送重量数据到本客户端
+            </param>
+            <returns>
+            true: success, false: failed
+            true: 设置成功; false: 设置失败
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.DoWeightWindowChanged(IND880.Advance.APIClient.Events.WeightWindowStatusEventArgs)">
+            <summary>
+            Trigger event to inform other software the status of weight window was changed.
+            </summary>
+            <param name="e">the event argument</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.ClearAllScales">
+            <summary>
+            Clear all instance of the scale.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.GetTerminalSetting">
+            <summary>
+            Get the setting of the terminal
+            从服务器获取仪表设置
+            </summary>
+            <returns>
+            Return the setting of the terminal, if there is any exception, we return the null.
+            返回仪表设置,如果获取过程发生异常则返回null。
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.GetWeightWindowStatus">
+            <summary>
+            Get the status of weight window from server
+            从服务器获取称重窗体状态
+            </summary>
+            <returns>
+            Return the status of weight window, if there is any exception, we return the null.
+            返回称重窗体状态，如果获取过程发生异常则返回null。
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.RegisterEventToClientNotify">
+            <summary>
+            Register event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.UnregisterEventToClientNotify">
+            <summary>
+            Unregister event to client notification object
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.DoSetupUIStatusChanged(IND880.Advance.APIClient.Events.SetupUIStatusEventArgs)">
+            <summary>
+            Tell other software that the status of the setup UI was changed.
+            </summary>
+            <param name="e">The event argument which hold the status of setup UI</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Terminal.GetAllSettings">
+            <summary>
+            Get all settings of the terminal and scales
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Terminal.CurrentScaleSwitched">
+            <summary>
+            When other clients or other program change the current scale.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Terminal.SetupUIStatusChanged">
+            <summary>
+            When the status of setup UI is changed.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Terminal.WeightWindowChanged">
+            <summary>
+            When the status of weight window is changed.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.Scales">
+            <summary>
+            Get all of scales of this terminal.
+            获取本仪表中所有的秤台对象实例。
+            </summary>
+            <returns>
+            the scale list;
+            返回秤台实例列表。
+            </returns>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.CurrentScale">
+            <summary>
+            the scale which is used by terminal currently.
+            返回当前秤台的对象实例。
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.WeightWindow">
+            <summary>
+            the status of the weight window;
+            称重窗体的状态
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.SetupUIIsOpen">
+            <summary>
+            this value indicates wether the setup UI is open
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Terminal.TerminalSetting">
+            <summary>
+            the setting information of the terminal
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Scale">
+            <summary>
+            The class represents all the behaviors of a scale.
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Scale.m_ServerIP">
+            <summary>
+            The IP of server which runs the API server
+            </summary>
+        </member>
+        <member name="F:IND880.Advance.APIClient.Scale.m_ServerPort">
+            <summary>
+            The TCP port of server which runs the API server
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.RegisterAPIServiceClientEvents">
+            <summary>
+            Register events of the API service client.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.UnRegisterAPIServiceClientEvents">
+            <summary>
+            Unregister events of the API service client.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.#ctor(System.String,System.Int32,System.Int32,System.String,IND880.Advance.APIClient.ClientNotify)">
+            <summary>
+            Constuctor
+            </summary>
+            <param name="scaleNo">The ID of the scale</param>
+            <param name="clientID">The client ID used to call WCF method</param>
+            <param name="clientNotify">the callback object</param>
+            <param name="apiServerIP"> The IP of server which runs the API server</param>
+            <param name="apiServerPort">The TCP port of server which runs the API server</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.Finalize">
+            <summary>
+            Destructor
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.Dispose">
+            <summary>
+            The method is used to release related resource
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.TareScale(System.Int32)">
+            <summary>
+            Tare specified weight on this scale
+            </summary>
+            <param name="timeout">The time you would like to wait for taring process</param>
+            <returns>the value of enumTareResult enumeration</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.CheckButtonTareResult">
+            <summary>
+            After calling the TareScale(int timeout) method, if you set timeout parameter as 0,
+            you need to call this method to get the real result of tare command.
+            </summary>
+            <returns>the value of enumTareResult enumeration</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.TareScale(IND880.Advance.APIClient.APIServiceReference.Weight)">
+            <summary>
+            Tare specified weight on this scale
+            </summary>
+            <param name="tareWeight">the weight you need to tare on this scale</param>
+            <exception cref="T:System.ArgumentNullException">When tareWeight is null</exception>
+            <returns>the value of enumTareResult enumeration</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.ClearTare">
+            <summary>
+            Clear the tare on the scale
+            </summary>
+            <returns>the value of enumTareResult enumeration</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.ZeroScale(System.Int32)">
+            <summary>
+            Zero the particular scale
+            </summary>
+            <param name="timeout">The time you would like to wait for zeroing process</param>
+            <returns>
+            ZERO_SUCCESS: Succeed to zero the scale.
+            ZERO_FAILED : 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.CheckZeroResult">
+            <summary>
+            After you send the zero command, you need use this method to check the result of the zero command.
+            </summary>
+            <returns>The result of zero command</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.SwitchUnit">
+            <summary>
+            Switch the current unit of the scale, if current unit is primary unit, it will be changed to secondary unit;
+            if current unit is secondary unit, it will be changed to primary unit.
+            </summary>
+            <returns>
+            SWITCHUNIT_SUCCESS: Succeed to swith the second unit.
+            SWITCHUNIT_FAILED : 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+                5. Unit is not supported.
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.SwitchUnit(IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Switch the current unit of the scale
+            </summary>
+            <param name="unit">the unit which you need to switch to </param>
+            <returns>
+            SWITCHUNIT_SUCCESS: Succeed to swith the second unit.
+            SWITCHUNIT_FAILED : 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+                5. Unit is not supported.
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.SwitchSecondaryUnit(IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Switch the secondary unit of the scale
+            </summary>
+            <param name="unit">the unit which you need to switch to </param>
+            <returns>
+            SWITCHUNIT_SUCCESS: Succeed to swith the second unit.
+            SWITCHUNIT_FAILED : 
+                1. Cannot connect to API server.
+                2. API Server is not available.
+                3. ShareData Server is not connected.
+                4. ShareData Server gave invalid response to API server.
+                5. Unit is not supported.
+            </returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.GetScaleSetting">
+            <summary>
+            Get setting of the scale
+            </summary>
+            <returns>The setting of the scale</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.GetScaleWeight">
+            <summary>
+            Get the scale weight data from server end. this is not same as the property CurrentScaleWeight,
+            You can just get the local copy of the scale weight from the CurrentScaleWeight property, if you open the 
+            </summary>
+            <returns>the weight data of the scale</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.GetWeighingMode">
+            <summary>
+            Get the current weighing mode of this scale
+            </summary>
+            <returns>NET_MODE,GROSS_MODE, if there is any exception, it returns INVALID_MODE</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.IsAtZero">
+            <summary>
+            Judge whether the scale's weight is zero.
+            </summary>
+            <param name="clientID">the ID of client</param>
+            <param name="scaleNo">the ID of the scale</param>
+            <returns>ZERO_STATUS, NOT_ZERO_STATUS; INVALID_STATUS : used for returnning an error</returns>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.OnScaleWeightRecevied(IND880.Advance.APIClient.APIServiceReference.ScaleWeightData)">
+            <summary>
+            the weighing data of the scale is received
+            </summary>
+            <param name="weightData">the weighing data of the scale</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.OnScaleWeighingModeChanged(IND880.Advance.APIClient.APIServiceReference.enumScaleWeighingMode,IND880.Advance.APIClient.APIServiceReference.Weight)">
+            <summary>
+            Receive the event of the weighing mode modification
+            </summary>
+            <param name="tareWeight"></param>
+            <param name="scaleWeightMode">the current weighing mode</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.OnScaleZeroed">
+            <summary>
+            Received the event that scale was zeroed
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.OnScaleUnitChanged(IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Received the event that the primary weight unit was changed
+            </summary>
+            <param name="weightUnit">the current primary weight unit</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.OnScaleSecondaryUnitChanged(IND880.Advance.APIClient.APIServiceReference.enumWeightUnit)">
+            <summary>
+            Received the event that the secondary weight unit was changed
+            </summary>
+            <param name="weightUnit">the current secondary weight unit</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.DoScaleZeroed(IND880.Advance.APIClient.Events.ScaleNoEventArgs)">
+            <summary>
+            Trigger the event that scale was zeroed
+            </summary>
+            <param name="scaleNo">the ID of the scale</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.DoScaleWeighingModeChanged(IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs)">
+            <summary>
+            Trigger the event of the weighing mode changed
+            </summary>
+            <param name="tareWeight"></param>
+            <param name="scaleWeightMode">the current weighing mode</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.DoScaleSecondaryUnitChanged(IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs)">
+            <summary>
+            Trigger the event that the secondary weight unit was changed
+            </summary>
+            <param name="weightUnit">the current secondary weight unit</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.DoScaleUnitChanged(IND880.Advance.APIClient.Events.ScaleUnitChangedEventArgs)">
+            <summary>
+            Trigger the event that the primary weight unit was changed
+            </summary>
+            <param name="weightUnit">the current primary weight unit</param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Scale.DoScaleWeightReceived(IND880.Advance.APIClient.Events.ScaleWeightDataEventArgs)">
+            <summary>
+            Trigger the event that the weight data was received
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.UnitTestFlag">
+            <summary>
+            Indicates wether the context is in unit testing. 
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Scale.ScaleWeightReceived">
+            <summary>
+            When it receives weighing data.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Scale.ScaleWeighingModeChanged">
+            <summary>
+            When other clients or other program change the weighing mode.
+            It might be someone executes taring or clearing tare operation.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Scale.ScaleZeroed">
+            <summary>
+            When other clients or other program zero the scale.
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Scale.ScaleUnitChanged">
+            <summary>
+            When other clients or other program change the primary unit of the scale
+            </summary>
+        </member>
+        <member name="E:IND880.Advance.APIClient.Scale.ScaleSecondaryUnitChanged">
+            <summary>
+            When other clients or other program change the secondary unit of the scale.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.Setting">
+            <summary>
+            the setting information of this scale, you can get every static information from the setting.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.CurrentScaleWeight">
+            <summary>
+            the current weight of this scale. 
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.DisplayWeight">
+            <summary>
+            the weight who is being displayed on the screen
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.GrossWeight">
+            <summary>
+            the gross weight
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.NetWeight">
+            <summary>
+            the net weight
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.TareWeight">
+            <summary>
+            the tare weight
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.HighSolutionWeight">
+            <summary>
+            The weight which displayed by higher solution, *10 mode.
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Scale.ScaleNumber">
+            <summary>
+            the ID of the scale
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs">
+            <summary>
+            The event argument class who provides the weighing mode of particular scale and other relative data.
+            称重模式事件参数，其中提供了当前称重模式以及相关的皮重和秤台信息。
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs.#ctor(System.Int32,IND880.Advance.APIClient.APIServiceReference.enumScaleWeighingMode,IND880.Advance.APIClient.APIServiceReference.Weight)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="weighingMode">
+            the weighing mode the scale
+            </param>
+            <param name="scaleNo">
+            the ID of the scale
+            </param>
+            <param name="tareWeight">
+            the weight is tarred on the scale, if the scale is in
+            the gross weighing mode, this value is zero.
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs.ScaleNo">
+            <summary>
+            the ID of the scale
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs.WeighingMode">
+            <summary>
+            the weighing mode the scale
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.ScaleWeighingModeEventArgs.TareWeight">
+            <summary>
+            the weight is tarred on the scale, if the scale is in
+            the gross weighing mode, this value is zero.
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.OSEnvironment">
+            <summary>
+            This class holds some operation system related setting.
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.OSEnvironment.Shutdown">
+            <summary>
+            Shut down the X86 board
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.OSEnvironment.GetIPAddress">
+            <summary>
+            Get the IP address of local machine
+            </summary>
+            <returns>Get the IP address of this computer.</returns>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Events.InputStatusEventArgs">
+            <summary>
+            The event argument which hold the input status;
+            用于IO输入状态的事件参数
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Events.InputStatusEventArgs.#ctor(System.Byte,System.Byte,IND880.Advance.APIClient.APIServiceIOReference.InputStatus)">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="slotNo">
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </param>
+            <param name="portNo">
+            the input port number;
+            输入端口号
+            </param>
+            <param name="status">
+            the input status of the input port, it includes the electrical level, rising edge event and falling edge event;
+            输入串口的IO输入状态，其中包括电平、上升沿信号和下降沿信号
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.InputStatusEventArgs.SlotNo">
+            <summary>
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.InputStatusEventArgs.PortNo">
+            <summary>
+            the input port number;
+            输入端口号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Events.InputStatusEventArgs.Status">
+            <summary>
+            the input status of the input port, it includes the electrical level, rising edge event and falling edge event;
+            输入端口的IO输入状态，其中包括电平、上升沿信号和下降沿信号。
+            </summary>
+        </member>
+        <member name="T:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException">
+            <summary>
+            The exception indicates the IO device is not exist.
+            IO设备不存在异常
+            </summary>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte)">
+            <summary>
+            Constructor;
+            构造函数
+            </summary>
+            <param name="boardType">
+            the type of the IO device;
+            IO设备的类型，本地IO板或远程IO设备
+            </param>
+            <param name="slotNo">
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.String)">
+            <summary>
+            Constructor,Use the special message to initialize the instance of the exception;
+            构造函数，使用指定的信息来初始异常对象
+            </summary>
+            <param name="message">
+            the special message;
+            指定的信息
+            </param>
+            <param name="boardType">
+            the type of the IO device;
+            IO设备类型
+            </param>
+            <param name="slotNo">
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.#ctor(IND880.Advance.APIClient.APIServiceIOReference.enumIOBoardType,System.Byte,System.String,System.Exception)">
+            <summary>
+            Constructor,
+            构造函数
+            </summary>
+            <param name="message">
+            the message of exception,
+            指定的异常信息
+            </param>
+            <param name="inner">
+            the inner exception which you want to wrap,
+            您所希望的包装的内部异常
+            </param>
+            <param name="boardType">
+            the type of the IO device,
+            IO设备的类型
+            </param>
+            <param name="slotNo">
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </param>
+        </member>
+        <member name="M:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Use the serialization way to create the new instance of this exception,
+            使用序列化方式创建新的异常实例
+            </summary>
+            <param name="info">
+            The serialization object,
+            序列化对象
+            </param>
+            <param name="context">
+            the context of this exception,
+            异常内容
+            </param>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.SlotNo">
+            <summary>
+            the slot Number of the local IO board or the address of the remote IO device(ARM100);
+            本地IO扩展板的槽号或远程IO设备的的节点号
+            </summary>
+        </member>
+        <member name="P:IND880.Advance.APIClient.Exceptions.DiscreteIODeviceNotExistException.BoardType">
+            <summary>
+            the type of the IO device,
+            IO设备的类型
+            </summary>
+        </member>
+    </members>
+</doc>
